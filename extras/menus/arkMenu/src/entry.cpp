@@ -118,13 +118,13 @@ void Entry::execute(){
 }
 
 void Entry::gameBoot(){
-	MusicPlayer::fullStop();
-	SystemMgr::pauseDraw();
+    MusicPlayer::fullStop();
+    SystemMgr::pauseDraw();
 	
-	if (common::getConf()->fast_gameboot) {
-		sceDisplaySetHoldMode(1);
-		return;
-	}
+    if (common::getConf()->fast_gameboot) {
+        sceDisplaySetHoldMode(1);
+        return;
+    }
 	
     unsigned mp3_size;
     void* mp3_buffer = common::readFromPKG("BOOT.MP3", &mp3_size);
