@@ -118,18 +118,13 @@ void Entry::execute(){
 }
 
 void Entry::gameBoot(){
+	MusicPlayer::fullStop();
+	SystemMgr::pauseDraw();
 
-    //if (common::getConf()->fast_gameboot && name != "Recovery Menu")
-    if (common::getConf()->fast_gameboot) {
-    	MusicPlayer::fullStop();
-    	SystemMgr::pauseDraw();
-    	sceDisplaySetHoldMode(1);
+	if (common::getConf()->fast_gameboot) {
+		sceDisplaySetHoldMode(1);
         return;
 	}
-
-    MusicPlayer::fullStop();
-
-    SystemMgr::pauseDraw();
 
     unsigned mp3_size;
     void* mp3_buffer = common::readFromPKG("BOOT.MP3", &mp3_size);
